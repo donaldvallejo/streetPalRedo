@@ -6,9 +6,9 @@ from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from flask_googlemaps import GoogleMaps
-
+from flask_googlemaps import GoogleMaps
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/streetPal')
-client = MongoClient(host=f'{host}?retryWrites=false')
+client = MongoClient(host=f"{host}?retryWrites=false")
 db = client.get_default_database()
 service = db.services
 comments = db.comments
@@ -19,14 +19,12 @@ maps = GoogleMaps(app, key="AIzaSyChhJt9bRZvlbMol6VvdQNKwR1BrvV9kx8")
 @app.route('/')
 def services_index():
   """Show all services"""
-  serv = services.find()
-  print(serv)
-  return render_template('services_index.html', services=serv)
+  return render_template('streetPals_index.html', services=service)
 
 @app.route('/services/new')
 def services_new():
   """Create services"""
-  return render_template('services_new.html', service = {}, title='New services')
+  return render_template('streetPals_new.html', service = {}, title='New services')
 
 @app.route('/services', methods=['POST'])
 def services_submit():
