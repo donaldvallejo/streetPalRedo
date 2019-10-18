@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+<div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Street Pal</h3>
+            </div>
+            <ul class="list-unstyled components">
+                <div class="active-cyan-4 mb-4">
+                        <form action="/search" method="POST"><input name="search" class="form-control" type="text" placeholder="Search" aria-label="Search">
+                        <!-- <button type="submit">Submit</button> -->
+                        </form>
+                    </div>
+                <li class="active">
+                    <a href="#humanServicesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Human Services</a>
+                    <ul class="collapse list-unstyled" id="humanServicesSubmenu">
+                        <li>
+                            <a href="#">Food Stamps</a>
+                        </li>
+                        <li>
+                            <a href="#">Medi Cal</a>
+                        </li>
+                        <li>
+                            <a href="#">Cal Fresh</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#healthCareSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Health Care</a>
+                    <ul class="collapse list-unstyled" id="healthCareSubmenu">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Public Bathrooms</a>
+                </li>
+                <li>
+                <li>
+                    <a href="#aboutUsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">About Us</a>
+                    <ul class="collapse list-unstyled" id="aboutUsSubmenu">
+                        <li>
+                            <p>Our Mission is to make it easy for everyone to get the care and services they need. We take pride in providing the best information possbile to help anyone in need.</p>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#contactUsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Contact Us</a>
+                    <ul class="collapse list-unstyled" id="contactUsSubmenu">
+                        <li>
+                            <p>Ask questions anytime!
+                               Phone: (123) 456-7899
+                               Email: streetPal@gmail.com
+                            </p>
+                        </li>
+                    </ul>
+                </li>                
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 108% !important;">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                            <div class='pull-right'>
+                                <a href='/streetPals/new' class='btn btn-default navbar-btn'>Create</a>
+                            </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="card mb-3" style="min-width: 108%;">
+                    <div class="row no-gutters">
+                      <div class="col-md-4">
+                        {{googlemap("my_awesome_map", lat=0.23234234, lng=-0.234234234, markers=[(0.12, -0.45345)])}}
+                        <div class="container">
+                            <div class="row">
+                        <h2 class="col-md-4"><a href=''><button class="btn btn-primary">Comment{{ comment }}</button></a></h2>
+                        <h2 class="col-md-2"><a href=''><button class="btn btn-warning">Edit{{ edit }}</button></a></h2>
+                        <h2 class="col-md-1"><form method="POST" action=""><button type="submit" class="btn btn-danger">Delete{{ delete }}</button></form></h2>
+                    </div>
+                    </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">Health Right 360</h5>
+                          <p class="card-text">HealthRIGHT 360 is a family of integrated health programs that provides compassionate care and treatment to over 38,000 individuals a year through more than 70 distinct and culturally competent programs in 13 California counties.</p>
+                          <p class="card-text">1563 Mission St, San Francisco, CA 94103</p>
+                          <p class="card-text">425-557-5100</p>
+                          <p class="card-text">9AM - 5pm, M - W</p>
+                          <p class="card-text">https://www.healthright360.org/</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+<!--                   
+            <div class='row col-md-12'>
+                    {% for car in cars %}
+                    <div class='col-sm-3'>
+                        <img src="{{ car.Image }}" style="width: 100% !important;" alt="">
+                        <div class="container">
+                    <div class="row centered">
+                        <h2 class="col-sm-3"><a href='/cars/purchase{{ car._id }}'><button class="btn btn-success">Purchase{{ purchase }}</button></a></h2>
+                        <h2 class="col-sm-3"><a href='/cars/{{ car._id }}'><button class="btn btn-primary">Comment{{ comment }}</button></a></h2>
+                        <h2 class="col-sm-3"><a href='/cars/{{ car._id }}/edit'><button class="btn btn-warning">Edit{{ edit }}</button></a></h2>
+                        <h2 class="col-sm-3"><form method="POST" action="/cars/{{ car._id }}/delete"><button type="submit" class="btn btn-danger">Delete{{ delete }}</button></form></h2>
+            
+                    </div>
+                        </div>
+                            <div class="row offset-md-1 centered">
+                                <div class=""></div>
+                                <p class="col-sm-2">{{ car.Make }}</p>
+                                <p class="col-sm-2">{{ car.Model }}</p>
+                                <p class="col-sm-2">{{ car.Color }}</p>
+                                <p class="col-sm-2">{{ car.Price }}</p>
+                            </div>
+                            <div class="row offset-md-1">            
+                                <p class="col-sm-12">{{ car.Description }}</p>
+                            </div>
+                    </div>
+                    {% endfor %} -->
+                <!-- </div> -->
+            </div> 
+</div>  
+
+{% endblock %} 
