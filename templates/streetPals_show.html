@@ -4,11 +4,11 @@
 <a href='/'>Back to Home Page</a>
 <div class='row'>
     <div class='col-sm-6 col-sm-offset-3'>
-        <h1>{{streetPal.name}}</h1>
-        {% endif %}
-        <h2>{{ streetPal.description }}</h2>
-        <p><a href='/streetPals/{{ streetPal._id }}/edit'>Edit</a></p>
-        <p><form method='POST' action='/streetPals/{{streetPal._id}}/delete'>
+        <h1>{{service.name}}</h1>
+        
+        <h2>{{ service.description }}</h2>
+        <p><a href='/services/{{ service._id }}/edit'>Edit</a></p>
+        <p><form method='POST' action='/services/{{service._id}}/delete'>
             <input type='hidden' name='_method' value='DELETE'>
             <button class='btn btn-primary' type='submit'>Delete</button>
         </form></p>
